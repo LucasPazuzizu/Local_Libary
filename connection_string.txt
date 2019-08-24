@@ -1,0 +1,1 @@
+mongodb+srv://pazu:pikpik@cluster0-ru6wj.mongodb.net/test?retryWrites=true&w=majority
