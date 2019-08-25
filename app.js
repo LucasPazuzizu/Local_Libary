@@ -6,15 +6,15 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
+var catalogRouter = require('./routes/catalog');  //Import routes for "catalog" area of site
 
 /* MongoDB */
 // Import the mongoose module
 var mongoose = require('mongoose');
 
 // Set up default mongoose connection
-var database_url = require('./connection_string.txt');
-var mongoDB = database_url;
+var database_url = require('./connection_string');
+var mongoDB = database_url.url;
 mongoose.connect(mongoDB, {useNewUrlParser: true});
 
 // Get the default connection
@@ -37,6 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/catalog', catalogRouter);  // Add catalog routes to middleware chain.
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
